@@ -25,12 +25,12 @@ export const CompSignIn = () => {
 
     const confirmacion = () => {
         let confirmacion;
-        confirmacion = contraseña == cContraseña ? cContraseña : "(Las contraseñas no son la misma)"
+        confirmacion = contraseña === cContraseña ? cContraseña : "(Las contraseñas no son la misma)"
         return confirmacion;
     }
 
     const mostrarResultados = () => {
-        console.log("Tu usuario sera " + usuario + "con correo " 
+        console.log("Tu usuario sera " + usuario + " con correo " 
         + correo + " y contraseña " + confirmacion())
     }
 

@@ -1,4 +1,4 @@
-import { CompSignIn } from "../componentes/CompSignIn"
+import { CompSignIn } from "../componentes"
 
 export const SignIn = () => {
     return(

@@ -20,11 +20,11 @@ export const CompLogin = () => {
     return (
         <>
             <div>
-                <label>Usuario:</label>
+                <label>Usuario: </label>
                 <input type="text" placeholder="Enter username" onChange={(evt) => tomarUsuario(evt)}/>
             </div>
             <div>
-                <label>Contraseña:</label>
+                <label>Contraseña: </label>
                 <input type="password" placeholder="Enter password" onChange={(evt) => tomarContraseña(evt)} />
             </div>
             <div>
