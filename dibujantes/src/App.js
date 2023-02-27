@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import { login } from './pages/login';
+import { Login } from './pages/Login';
+import { SignIn } from './pages/SignIn';
+import { Mensajes } from './pages/Mensajes';
 
 function App() {
   return (
     <>
-      <login />
+      <Login />
+      <SignIn />
+      <Mensajes />
     </>
   );
 }
