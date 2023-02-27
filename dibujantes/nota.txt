@@ -1,0 +1,6 @@
+Parece ser que el programa no corre a menos que ponga "cd dibujantes" antes que el "npm start"
+lo que me resulta raro porque nunca me habia pasado,
+
+Aparte de eso me toco hacer "cd dibujantes" y "npm install" lo que instalo la carpeta node_modules
+
+No se si sea cosa mia pero cuando programabamos en la universidad nunca me paso este problema
