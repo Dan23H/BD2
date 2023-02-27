@@ -6,8 +6,6 @@ export const CompSignIn = () => {
     const[contraseña, setContraseña]= useState('')
     const[cContraseña, setCContraseña]= useState('')
 
-    let confirmacion;
-    confirmacion = contraseña == cContraseña ? confirmacion : "Las contraseñas no son la misma"
 
     const tomarUsuario = (evt) => {
         setUsuario(evt.target.value)
@@ -25,9 +23,15 @@ export const CompSignIn = () => {
         setCContraseña(evt.target.value)
     }
 
+    const confirmacion = () => {
+        let confirmacion;
+        confirmacion = contraseña == cContraseña ? cContraseña : "(Las contraseñas no son la misma)"
+        return confirmacion;
+    }
+
     const mostrarResultados = () => {
         console.log("Tu usuario sera " + usuario + "con correo " 
-        + correo + " y contraseña" + confirmacion)
+        + correo + " y contraseña " + confirmacion())
     }
 
     return (
