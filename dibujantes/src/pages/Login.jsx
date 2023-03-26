@@ -10,8 +10,8 @@ export const Login = () => {
                 <ComponenteInput tipo="text" valor="Usuario" />
                 <ComponenteInput tipo="password" valor="Contraseña" />
                 <div>
-                    <Link to="/register"><button>Sign In</button></Link>
-                    <Link to="/home"><button>Log In</button></Link>
+                    <Link to="/register"><button>Registrarse</button></Link>
+                    <Link to="/home"><button>Iniciar Sesión</button></Link>
                 </div>
             </div>
 
