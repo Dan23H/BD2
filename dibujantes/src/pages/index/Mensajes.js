@@ -1,4 +1,4 @@
-import {FormatoMensaje} from '../componentes'
+import { FormatoMensaje } from "../../components/shared/FormatoMensaje"
 
 export const Mensajes = () => {
     return (

@@ -1,7 +1,7 @@
 import './App.css';
-import { Login } from './pages/Login';
-import { SignIn } from './pages/SignIn';
-import { Mensajes } from './pages/Mensajes';
+import { Login } from './pages/index/Login';
+import { SignIn } from './pages/index/SignIn';
+import { Mensajes } from './pages/index/Mensajes';
 
 function App() {
   return (

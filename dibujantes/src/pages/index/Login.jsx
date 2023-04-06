@@ -1,5 +1,5 @@
 import React from "react";
-import { CompLogin } from "../componentes/CompLogin";
+import { LoginForm } from "../../components/index/LoginForm";
 
 export const Login = () => {
 
@@ -7,7 +7,7 @@ export const Login = () => {
 
         <div>
             <h1>Login</h1>
-            <CompLogin />
+            <LoginForm />
         </div>
 
     );
