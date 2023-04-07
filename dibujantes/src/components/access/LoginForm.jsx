@@ -1,9 +1,8 @@
 import { useState } from "react"
 import styles from "./Logeo.module.css";
+import { Link } from "react-router-dom";
 
-export const LoginForm = ({ onSignIn }) => {
-
-
+export const LoginForm = () => {
     const [usuario, setUsuario] = useState(0)
     const [contraseña, setContraseña] = useState(0)
 
@@ -40,16 +39,20 @@ export const LoginForm = ({ onSignIn }) => {
                     />
                 </div>
                 <div className={styles.buttonsContainer}>
-                    <button className={styles.signInButton}
-                        type="button"
-                        onClick={onSignIn}>
-                        Sign In
-                    </button>
-                    <button
-                        className={styles.logInButton}
-                        onClick={() => pruebaDeTomaDeDatos()}>
-                        Log In
-                    </button>
+                    <Link to="/register">
+                        <button
+                            className={styles.signInButton}
+                            type="button" >
+                            Registro
+                        </button>
+                    </Link>
+                    <Link to="/home">
+                        <button
+                            className={styles.logInButton}
+                            type="button">
+                            Iniciar Sesión
+                        </button>
+                    </Link>
                 </div>
             </div>
         </>

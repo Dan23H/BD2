@@ -1,4 +1,7 @@
 // Archivo barril
-export { LoginForm } from './index/LoginForm'
-export { SignInForm } from './index/SignInForm'
-export { FormatoMensaje } from './shared/FormatoMensaje'
+export { LoginForm } from './access/LoginForm'
+export { SignInForm } from './access/SignInForm'
+export { FormatoMensaje } from './messageMail/FormatoMensaje'
+export { Album } from './home/Album'
+export { Navbar } from './home/Navbar'
+export { Post } from './home/Post'
