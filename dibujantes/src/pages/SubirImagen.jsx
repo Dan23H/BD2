@@ -54,7 +54,7 @@ export const SubirImagen = () => {
         setImages([])
         setCategory('')
         setDescription('')
-        navigate("/interfaz-usuario")
+        navigate("/home")
     }
 
     return (
