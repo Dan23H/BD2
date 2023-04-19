@@ -46,7 +46,7 @@ export const Navbar = ({ searchBar, current, item1, item2, item3, item4 }) => {
                 </Link>
               </li>
               <li className="nav-item" title={item3}>
-                <Link className={fixCSS(item3, current)} to={fix(item3)}>
+                <Link className={fixCSS(item3, current)} to={{pathname: '/perfil'}}>
                   {item3}
                 </Link>
               </li>
