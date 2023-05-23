@@ -2,6 +2,7 @@ import { Album, Navbar } from "../components";
 import "../components/home/album.css";
 import {postsPrueba1, postsPrueba2} from "../components/fake-data/album-data"
 
+
 export const Home = () => {
     
     return (
