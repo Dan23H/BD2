@@ -15,7 +15,9 @@ export const LoginForm = () => {
               className={styles.input}
               type='text'
               placeholder='Ingrese su nombre de usuario'
-              onChange={(evt) => tomarUsuario(evt)}
+              onChange={tomarUsuario}
+              value={usuario}
+              required
             />
           </div>
           <div className={styles.formGroup}>
@@ -23,7 +25,9 @@ export const LoginForm = () => {
               className={styles.input}
               type='password'
               placeholder='Ingrese su contraseña'
-              onChange={(evt) => tomarContraseña(evt)}
+              onChange={tomarContraseña}
+              value={contraseña}
+              required
             />
           </div>
           {credencialesInvalidas && (
@@ -35,7 +39,7 @@ export const LoginForm = () => {
             <button
               className={styles.logInButton}
               type='button'
-              onClick={(e) => handleLogin(e)}
+              onClick={handleLogin}
             >
               Acceder
             </button>

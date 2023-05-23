@@ -3,13 +3,13 @@ import "../components/subirImagen/subirImagen.css";
 import { useState } from "react";
 
 export const EditarPerfil = ({ perfilImg, portadaImg }) => {
-  let {state}=useLocation();
+  let { state } = useLocation();
   const [images, setImages] = useState(false);
   const [imagesPortada, setImagesPortada] = useState(false);
   const [nuevoNombre, setNuevoNombre] = useState(state.nombre);
-  const [nuevoPais, setNuevoPais] = useState(state.pais); 
+  const [nuevoPais, setNuevoPais] = useState(state.pais);
   const nav = useNavigate()
-  
+
 
   const handleImagen = (e) => {
     const newImages = Array.from(e.target.files)
@@ -62,13 +62,37 @@ export const EditarPerfil = ({ perfilImg, portadaImg }) => {
     nav("/perfil")
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    alert("La imagen ha sido publicada exitosamente!");
-    setImages([]);
-    setNuevoNombre("");
-    setNuevoPais("");
-    nav("/perfil")
+    const formData = new FormData();
+    formData.append("correo", state.email);
+    formData.append("pais", nuevoPais);
+    formData.append("foto", images[0].file);
+    formData.append("portada", imagesPortada[0].file);
+
+    try {
+      const response = await fetch("http://localhost:4000/editprofile", {
+        method: "PUT",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert("El perfil ha sido actualizado exitosamente!");
+        setImages([]);
+        setImagesPortada([]);
+        setNuevoNombre("");
+        setNuevoPais("");
+        nav("/perfil");
+      } else {
+        const error = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Ha ocurrido un error al actualizar el perfil. Por favor, inténtalo nuevamente.");
+    }
   };
 
   return (
@@ -110,7 +134,7 @@ export const EditarPerfil = ({ perfilImg, portadaImg }) => {
               {images ? (
                 <>
                   {images.map((image, index) => (
-                    <h5 style={{ display: "none" }}>
+                    <h5 key={index} style={{ display: "none" }}>
                       {(perfilImg = image.url)}
                     </h5>
                   ))}
@@ -130,12 +154,12 @@ export const EditarPerfil = ({ perfilImg, portadaImg }) => {
                 required
               />
 
-            <h6>Previsualización:</h6>
+              <h6>Previsualización:</h6>
 
               {imagesPortada ? (
                 <>
                   {imagesPortada.map((image, index) => (
-                    <div className="card mb-4 box-shadow" id={index}>
+                    <div key={index} className="card mb-4 box-shadow" id={index}>
                       <h5 style={{ display: "none" }}>
                         {(portadaImg = image.url)}
                       </h5>
@@ -156,7 +180,7 @@ export const EditarPerfil = ({ perfilImg, portadaImg }) => {
                           top: "20px",
                           left: "20px",
                         }}
-                        class="rounded-circle border border-4"
+                        className="rounded-circle border border-4"
                       />
                     </div>
                   ))}
@@ -190,7 +214,7 @@ export const EditarPerfil = ({ perfilImg, portadaImg }) => {
             <footer>
               <ul>
                 <li>
-                  <button className="btn btn-primary" type="button" onClick={() => handleSubmit()}>
+                  <button className="btn btn-primary" type="button" onClick={(event) => handleSubmit(event)}>
                     Guardar perfil
                   </button>
                 </li>

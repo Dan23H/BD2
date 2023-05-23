@@ -16,15 +16,33 @@ function useLoginForm() {
     setContraseña(evt.target.value)
   }
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const usuarioEncontrado = loginData.find(
-      (u) => u.usuario === usuario && u.contraseña === contraseña
-    );
-    if (usuarioEncontrado) {
-      Nav("/home");
-    } else {
-      setCredencialesInvalidas(true);
+
+    try {
+      const response = await fetch("http://localhost:4000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre: usuario,
+          correo: usuario, 
+          contraseña: contraseña,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Inicio de sesión exitoso
+        Nav("/home");
+      } else {
+        // Credenciales inválidas
+        setCredencialesInvalidas(true);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

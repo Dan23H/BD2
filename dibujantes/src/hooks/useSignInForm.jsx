@@ -27,15 +27,33 @@ function useSignInForm() {
   const handleRegistro = (e) => {
     e.preventDefault();
     if (contraseña === cContraseña) {
-      const nuevoUsuario = {
-        usuario: usuario,
+      const data = {
+        nombre: usuario,
         correo: correo,
         contraseña: contraseña,
+        confirmarContraseña: cContraseña,
       };
-      setUsuarios(usuarios.concat(nuevoUsuario));
-      console.log(JSON.stringify(usuarios)); //¿Cómo mostrarlo en la consola?
+
+      fetch("http://localhost:4000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.ok) {
+            console.log("Usuario registrado exitosamente");
+          } else {
+            console.error("Error al registrar usuario:", result.msg);
+          }
+        })
+        .catch((error) => {
+          console.error("Error de red:", error);
+        });
     } else {
-      setError("Las contraseñas no son la misma");
+      setErrorContraseña("Las contraseñas no coinciden");
     }
   };
 
