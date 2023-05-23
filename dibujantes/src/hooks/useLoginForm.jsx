@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginData } from "../components/fake-data/loginData";
 
-function useLoginForm() {
+export function useLoginForm() {
   const [usuario, setUsuario] = useState('');
   const [contraseña, setContraseña] = useState('');
   const Nav = useNavigate();
@@ -37,6 +37,4 @@ function useLoginForm() {
     credencialesInvalidas,
   };
 }
-
-export default useLoginForm;
 

@@ -2,14 +2,17 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyChRLjCJMiUucO6kOW03VgcxfpLT17Y054",
-    authDomain: "projectis2.firebaseapp.com",
-    projectId: "projectis2",
-    storageBucket: "projectis2.appspot.com",
-    messagingSenderId: "424091491292",
-    appId: "1:424091491292:web:6ee47239506e6245164d19",
-    measurementId: "G-QX6LW4JD8Q"
+  apiKey: "AIzaSyCk6sU7WgZ16aYpxaO7eg0cMQoyv2OQOYE",
+  authDomain: "drawers7t.firebaseapp.com",
+  projectId: "drawers7t",
+  storageBucket: "drawers7t.appspot.com",
+  messagingSenderId: "528627521574",
+  appId: "1:528627521574:web:e7edd20ad5d0c8687feee7"
 };
 
 // Inicializar Firebase
@@ -18,7 +21,7 @@ if (!firebase.apps.length) {
   } else {
     firebase.app();
   }
-  
+
   const db = firebase.firestore();
   const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
   

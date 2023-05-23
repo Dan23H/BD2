@@ -4,11 +4,14 @@ import { Provider, useDispatch } from "react-redux";
 import { login } from "./actions/auth";
 import { Routing } from "./routes/UserRoutes";
 import { firebase } from "./firebase/firebaseConfig"
+import AuthProvider from "./context/AuthProvider";
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Routing/>
+      <AuthProvider>
+        <Routing />
+      </AuthProvider>
     </Provider>
   );
 };
