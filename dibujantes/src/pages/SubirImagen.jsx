@@ -48,14 +48,17 @@ export const SubirImagen = () => {
     const handleSave = (event) => {
         event.preventDefault();
         // Aquí debes hacer una solicitud al backend para enviar los datos
-        const formData = new FormData();
+        var formData = new FormData();
         imagen.forEach((image) => {
-            formData.append("images", image.file);
+            var temp = btoa(image.file)
+            formData.append("images", temp);
+            console.log(temp)
         });
         formData.append("category", categoria);
         formData.append("description", descripcion);
+        console.log(formData)
 
-        fetch("http://localhost:4000/subirImagen", {
+        fetch("http://localhost:4000/subirimagen", {
             method: "POST",
             body: formData,
         })
@@ -66,6 +69,7 @@ export const SubirImagen = () => {
             setCategory("");
             setDescription("");
             navigate("/home");
+            //console.log(image.file)
         })
         .catch((error) => {
             console.error("Error:", error);
