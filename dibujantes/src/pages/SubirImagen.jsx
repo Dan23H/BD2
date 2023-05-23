@@ -44,28 +44,41 @@ export const SubirImagen = () => {
     const handleSave = (event) => {
         event.preventDefault();
         // Aquí debes hacer una solicitud al backend para enviar los datos
-        const formData = new FormData();
-        imagen.forEach((image) => {
-            formData.append("images", image.file);
-        });
-        formData.append("category", categoria);
-        formData.append("description", descripcion);
 
-        fetch("http://localhost:4000/subirImagen", {
+        const body = {
+            imagen: btoa(imagen[0].file),
+            categoria: categoria,
+            descripcion: descripcion
+        }
+
+        /*var formData = new FormData();
+        var temp = btoa(imagen[0].file)
+        formData.append("imagen", temp);
+        formData.append("categoria", categoria);
+        formData.append("descripcion", descripcion);*/
+
+        console.log(imagen)
+        console.log(body)
+
+        fetch("http://localhost:4000/subirimagen", {
             method: "POST",
-            body: formData,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
         })
-        .then((response) => response.json())
-        .then((data) => {
-            alert("La imagen ha sido publicada exitosamente!");
-            setImages([]);
-            setCategory("");
-            setDescription("");
-            navigate("/home");
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-        });
+            .then((response) => response.json())
+            .then((data) => {
+                alert("La imagen ha sido publicada exitosamente!");
+                setImages([]);
+                setCategory("");
+                setDescription("");
+                navigate("/home");
+                //console.log(image.file)
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     };
 
     return (
