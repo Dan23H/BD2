@@ -1,7 +1,9 @@
 import React from "react";
 import "../bootstrap-css/bootstrap.min.css";
 import "../components/perfil/perfil.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { startGoogleLogout } from "../actions/auth";
+import { useDispatch } from "react-redux";
 
 export const Perfil = ({
   nombre,
@@ -11,6 +13,12 @@ export const Perfil = ({
   portadaImg,
   ejemploImg,
 }) => {
+  const dispatch = useDispatch()
+  const nav = useNavigate()
+  const handleLogout = () => {
+    dispatch(startGoogleLogout())
+    nav("/")
+  }
   return (
     <div>
       <div>
@@ -49,13 +57,12 @@ export const Perfil = ({
               Home 🏠
             </button>
           </Link>
-          <Link to="/">
             <button
               class="btn btn-info position-relative rounded-pill"
+              onClick={handleLogout}
             >
               Cerrar sesión
             </button>
-          </Link>
 
           <img
             src={perfilImg}

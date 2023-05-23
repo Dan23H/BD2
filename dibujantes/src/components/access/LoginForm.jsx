@@ -1,10 +1,28 @@
 import useLoginForm from '../../hooks/useLoginForm';
 import styles from './Logeo.module.css';
 import logo from '../../assets/7T.png';
-import { Link } from 'react-router-dom';
+import google from "../../assets/google.png"
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { startGoogleAuth } from '../../actions/auth';
+import { firebase } from "../../firebase/firebaseConfig"
 
 export const LoginForm = () => {
-  const {usuario, contraseña, tomarUsuario, tomarContraseña, handleLogin, credencialesInvalidas} = useLoginForm();
+  const { usuario, contraseña, tomarUsuario, tomarContraseña, handleLogin, credencialesInvalidas } = useLoginForm();
+  const dispatch = useDispatch()
+
+  const handleGoogleAuth = async () => {
+    dispatch(startGoogleAuth())
+
+  }
+  setTimeout(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        window.location = '/home'; //After successful login, user will be redirected to home
+      }
+    })
+  }, 200)
+  
   return (
     <>
       <body>
@@ -44,6 +62,10 @@ export const LoginForm = () => {
                 Registro
               </button>
             </Link>
+
+          </div>
+          <div>
+            <button onClick={handleGoogleAuth} style={{ borderRadius: "100px", padding: "5px" }}>{<img style={{ height: "20px" }} src={google} alt="google" />}</button>
           </div>
         </div>
       </body>

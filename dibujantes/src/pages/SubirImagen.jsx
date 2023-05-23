@@ -38,10 +38,6 @@ export const SubirImagen = () => {
 
     const handleReset = (event) => {
         event.preventDefault();
-        fileInput.value = ""
-        setImages([])
-        setCategory('')
-        setDescription('')
         navigate("/home")
     }
 
