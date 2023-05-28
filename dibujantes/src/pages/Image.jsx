@@ -1,15 +1,20 @@
 import { Navbar, Album } from "../components"
 import { postsPrueba2 } from "../components/fake-data/album-data"
 import "../components/image/image.css"
+import { useCounter } from "../hooks"
+
 
 const data = {
     msg: "Shinobu Oshino :3",
     img: "https://c.wallhere.com/photos/7f/83/anime_Monogatari_Series_Oshino_Shinobu-125680.jpg!d",
     category: "#Anime",
+    likes: 0,
+    dislikes: 0
 }
 
 // Aquí se enviaría la información de la imagen a mostrar
 export const Image = () => {
+    const {likes, dislikes, addLike, addDislike} = useCounter(data.likes, data.dislikes)
     return (
         <div className="container"> 
             <Navbar
@@ -23,9 +28,10 @@ export const Image = () => {
             <div className="image-container">
                 <img src={data.img} alt="" />
             </div>
+            <div>Likes: {likes} Dislikes: {dislikes}</div>
             <div className="button-container">
-                <button>Up</button>
-                <button>Down</button>
+                <button onClick={() => addLike()}>Up</button>
+                <button onClick={() => addDislike()}>Down</button>
                 <button>Subscribe</button>
                 <button>Report</button>
                 <button>Download</button>
@@ -36,6 +42,8 @@ export const Image = () => {
                 </div>
                 <div>
                     Comentarios
+                    <br />
+                    {}
                 </div>
             </div>
             <div className="album">

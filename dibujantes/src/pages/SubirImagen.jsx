@@ -89,7 +89,7 @@ export const SubirImagen = () => {
                 </header>
 
                 <div className="sections">
-                    <form onSubmit={() => handleSave()}>
+                    <form onSubmit={() => handleSave()} method="POST" enctype="multipart/form-data">
                         <section className="active">
                             <input
                                 type="text"
@@ -117,6 +117,7 @@ export const SubirImagen = () => {
                                 type="file"
                                 accept="image/*"
                                 placeholder="Imagen"
+                                name="imagen"
                                 onChange={(event) => handleImagen(event)}
                                 required
                             />
